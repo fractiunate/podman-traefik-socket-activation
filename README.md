@@ -60,12 +60,20 @@ netstat -peanut
 docker run -d -p 8080:8080 -p 80:80   -v $PWD/traefik.yml:/etc/traefik/traefik.yml   -v /run/user/1005/podman/podman.sock:/var/run/docker.sock docker.io/library/traefik:v3
 
 
+## EDIT CONTAINER CONFIGS
+nano podman-traefik-socket-activation/examples/example1/whoami.container
+cp podman-traefik-socket-activation/examples/example1/*.container \
+   ~/.config/containers/systemd/
+
 ## SOCKET COMMANDS
 systemctl status whoami.service
-systemctl --user stop whoami.service
+systemctl --user stop whoami.service # Stop service running on socket // is this hardstop or kill?
 
+### RESTART after change
+systemctl --user daemon-reexec
+systemctl --user daemon-reload
+systemctl --user restart whoami.service
 
 ## PODMAN COMMANDS
 podman ps --format='{{json .Labels}}' #Show podman pod labels
-
 ```
