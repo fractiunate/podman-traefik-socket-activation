@@ -33,3 +33,30 @@ other programs.
 
 See also
 https://bugzilla.redhat.com/show_bug.cgi?id=1495053#c2
+
+
+## Ubuntu 22.04 Server Init
+
+```bash
+apt update
+apt install podman jq systemd-container -y
+alias docker=podman
+
+# https://github.com/eriksjolund/podman-traefik-socket-activation/tree/main/examples/example1
+apt-get install -y systemd-container # login with test user
+
+
+docker run -d -p 8080:80 docker.io/library/nginx
+
+systemctl enable podman.socket
+systemctl start podman.socket
+systemctl status podman.socket
+
+# ufw allow from any to any port 8080 proto tcp
+
+netstat -peanut
+
+
+docker run -d -p 8080:8080 -p 80:80   -v $PWD/traefik.yml:/etc/traefik/traefik.yml   -v /run/user/1005/podman/podman.sock:/var/run/docker.sock docker.io/library/traefik:v3
+
+```
