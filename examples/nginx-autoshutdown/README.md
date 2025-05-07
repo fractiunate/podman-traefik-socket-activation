@@ -13,4 +13,8 @@ Copy container to socket/ systemd config:
 ```
 cp podman-traefik-socket-activation-web/examples/nginx-autoshutdown/*.container \
    ~/.config/containers/systemd/
+cp podman-traefik-socket-activation-web/examples/nginx-autoshutdown/*.service \
+   ~/.config/systemd/user/
+cp podman-traefik-socket-activation-web/examples/nginx-autoshutdown/*.socket \
+      ~/.config/systemd/user/
 ```

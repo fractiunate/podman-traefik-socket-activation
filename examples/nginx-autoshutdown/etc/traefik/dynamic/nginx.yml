@@ -1,0 +1,13 @@
+http:
+  routers:
+    nginx-router:
+      rule: "Host(`hetzner1.fractiunate.me`)"
+      entryPoints:
+        - web
+      service: nginx-service
+
+  services:
+    nginx-service:
+      loadBalancer:
+        servers:
+          - url: "http://127.0.0.1:8080"

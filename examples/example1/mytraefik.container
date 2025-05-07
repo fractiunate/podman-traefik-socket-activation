@@ -7,7 +7,7 @@ Sockets=http.socket https.socket
 
 [Container]
 Image=docker.io/library/traefik
-Exec=--entrypoints.web --entrypoints.websecure --providers.docker --providers.docker.exposedbydefault=false
+Exec=--entrypoints.web --entrypoints.websecure --providers.docker --providers.docker.exposedbydefault=false --providers.file.directory="/etc/traefik/dynamic" --providers.file.watch=true
 Network=mynet.network
 Notify=true
 Volume=%t/podman/podman.sock:/var/run/docker.sock
