@@ -1,0 +1,10 @@
+[Unit]
+Description=nidle container
+Requires=nidle.socket
+After=nidle.socket
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/podman container start --attach nidle
+ExecStop=/usr/bin/podman container stop nidle
+Restart=on-failure
