@@ -17,4 +17,16 @@ cp podman-traefik-socket-activation-web/examples/nginx-autoshutdown/*.service \
    ~/.config/systemd/user/
 cp podman-traefik-socket-activation-web/examples/nginx-autoshutdown/*.socket \
       ~/.config/systemd/user/
+
+
+systemctl --user status nidle.socket
+systemctl --user stop nidle.socket
+systemctl --user restart nidle.socket
+journalctl -xe
+
+
+
+alias sustat="systemctl --user status"
+alias sugo="systemctl --user start"
+alias suxit="systemctl --user stop"
 ```
