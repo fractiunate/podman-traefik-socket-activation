@@ -50,7 +50,7 @@ Configure _socket activation_ for TCP ports 80 and 443.
    ```
 1. Install the container unit files
    ```
-   cp podman-traefik-socket-activation/examples/example1/*.container \
+   cp podman-traefik-socket-activation-web/examples/example1/*.container \
       ~/.config/containers/systemd/
    ```
 1. Install the network unit file
@@ -92,7 +92,7 @@ Configure _socket activation_ for TCP ports 80 and 443.
    ```
 1. Start the _traefik_ container
    ```
-   systemctl --user start mytraefik.service
+   systemctl --user restart mytraefik.service
    ```
    This step was added due to traefik issue [7347](https://github.com/traefik/traefik/issues/7347).
 1. Wait a few seconds
